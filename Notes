@@ -1,0 +1,363 @@
+Struct                               	 union
+{                                     {
+   int                                   int
+   int                                   int
+
+   }                                        }
+space:8 bytes                        space:4 bytes
+
+struct{                               union{
+   int...4                                int...4
+   double...8                             double...8
+}                                     }
+space:12                              space:8
+
+=>char size is 2 bytes in java whereas in other languages it is 1 byte Therefore it is standalone.
+=>for union if there is int and char space will be 8bytes(1char+4int+3)      (4-1)
+=>In Union space will be shared that means size of the largest datatype will be the space occupied in most of the cases.
+
+struct{
+  double
+  char
+}
+space:16 bytes
+8+1+7
+struct{
+  int
+  double
+  char
+}
+4+4+8
+
+Time complexity:
+for(i=0;i<n;i++){ //for n+1 iteration is false this loop executes n+1 times (polynomial:f(n)=n+1)
+   statements;
+}
+O(n)
+
+#include<stdio.h>
+int main(){
+  int i,n=5;
+  for(i=0;i<n;i++)
+     printf("%d",i);
+  printf("final i:%d",i);//i=5
+  return(0);
+}
+O(n)
+
+#include<stdio.h>
+int main(){
+  int i,n=5;
+  for(i=1;i<n;i+2)
+     printf("%d",i);
+  return(0);
+}// n/2=n since n/anything is n
+O(n)
+=>Irrespective of iteration time complexity is same.
+
+#include<stdio.h>//sumofdigits of a number
+int main(){
+  int i,n,sod,rem;
+  printf("Enter the number:");
+  scanf("%d",&n);
+  while(n!=0){
+      rem=n%10;
+      sod=sod+rem;
+      n=n/10;
+  }
+  printf("%d",sod);
+  return(0);
+}
+
+#include<stdio.h>
+int main(){
+  int i,n,sod,rem;
+  printf("Enter the number:");
+  scanf("%d",&n);
+  for(i=0;n!=0;i++){
+      rem=n%10;
+      sod=sod+rem;
+      n=n/10;
+  }
+  printf("%d",sod);
+  return(0);
+}
+
+for(i=0;i<n;i++){....n+1
+  for(j=0;j<n;j++){....n*(n+1)
+    statements;
+    }
+ }
+O(n^2)
+
+=>C and Java are the Primitive languages
+=>what is stack and heap memory, what is the difference and where we use
+=>type() is used to find the datatype
+
+for(i=0;i<n;i++){
+  for(j=0;j<i;j++){
+    statements;
+   }
+}
+i=0 then 0<0
+i    j
+0    nothing
+1    executes 0
+     1 it will stop
+     0,1 will execute
+2    2 will stop
+so when i O times
+1....1 time
+2....2 times
+so 1+2+3+..n=n(n+1)/2
+(n^2+n)/2
+O(n^2)
+
+p=0;
+for(i=1;p<=n;i++){
+  p=p+i;
+}
+0+1 bcs p=p+i..when N is 0                         Not n times assuming when will stop it when p>n p=k(k+1)/2 bcs 1+2+3+...k,p=k sqre>n so n=sqrt(n)  
+1+2=3...N is 1                                     Time complexity is O(sqrt(n))
+1+2+3=6
+.
+.
+.
+1+2+3+...K                   
+
+for(i=1;i<n;i*2){
+  statements;
+}
+Analyse:
+i=1  1 time
+i=2  2 times  (1*2)
+i=3  4 times  (1*2)*2=2^2
+i=4  8 times  (1*2*2)*2=2^3
+so when stopes i>=n
+i=2
+2^k
+2^k>=n
+k=log(n) base 2
+so time complexity O(log(n)) base 2
+
+for(i=n;i>=1;i=i/2){
+printf(i);
+}
+N
+n/2
+n/2 power 2
+
+n/2 power k
+Assume i<1 it stops right?
+n/2 power k<1
+n/2 power k=1
+n=2 power k
+k=log(n) base 2 so O(log(n))
+
+for(i=0;i<n;i++)...	O(n)
+for(i=0;i<n;i+2)...	O(n)
+for(i=n;i>1;i--)...	O(n)
+for(i=1;i<n;i=i*2)...	O(log(n) base 2)
+for(i=1;i<n;i=i*3)...	O(log(n) base 3)
+for(i=n;i>1;i=i/2)...	O(log(n))
+
+Constant Time Complexity: O(1)
+Linear Time Complexity: O(n)
+Logarithmetic Time Complexity: O(log(n))
+Quadratic Time Complexity: O(n^2)
+Exponential Time Complexity: O(2^n)
+
+SPACE COMPLEXITY
+Array of size n,require O(n) space.
+For two dimensional it is O(n^2) space.
+
+Linear search: best case:O(1)
+Merge Sort:   		:O(n)
+DFS(Depth First Search): O(n)
+BFS(Breadth First Search):O(n)
+Dynamic Programming:O(n^2) or O(n*m)
+
+Space complexity is parallel to Time complexity complex
+constant complexity: Same amount of space regardless of the input size n it is called constant complexity.
+Ex1: sum of array elements and linearsearch.Because space is not depending on values
+
+Quick sort Space complexity:O(log(n))
+Merge sort Space complexity:O(nlog(n))
+
+def generate_lists_of_lists(n):
+	table_list=[]
+	for num in range(n):
+		row=[]
+		for i in range(n):
+			row.append(i)
+		table_list.append(row)
+	return table_list
+print(generate_lists_of_list(10))
+output:[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]
+
+#include<stdio.h>
+struct a{
+	int x;
+	char y;
+	double z;
+	};
+int main(){
+	struct a yes;
+	printf("%d",sizeof(yes));
+	return(0);
+}
+
+factorial,fibonacci,sumofnnum
+
+MISSING NUMBER
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+	int a[20],n,sum,sumofarray,i,num;
+	printf("\nEnter the size of array:");
+	scanf("%d",&n);
+	printf("\nEnter the array elements:");
+	for(i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	sum=n*(n+1)/2;
+	for(i=0;i<n;i++){
+		sumofarray=sumofarray+a[i];
+	}
+	num=sum-sumofarray;
+	printf("Missingnumber:%d",num);
+}
+
+=>computer follows (PEMDAS)
+Parenthesis
+Exponential
+Multiplication
+Division
+Addition
+Subtraction
+
+		C     Python   java
+Bitwise and	&	&	&
+Bitwise or	|	|	|
+Bitwise NOT	~	~	~    (negation 1's compliment will be answer)
+Bitwise XOR     ^	^	^
+
+=>Arithmetic operator has highest priority compared to bitwise operators
+
+7+2&4+3&9
+Answer is 0001 i.e.; 1 in decimal
+
+=>Bitwise and operator has highest priority compared to bitwise or operator
+=>Priority order  & | ~ ^
+=>~n=-(n+1) according to system.
+
+XOR Types
+Inclusive and exclusive
+
+Bitwise leftshift
+7<<1=14
+=>convert the 7 to binary and then move the digits by 1 unit left then we will get 1110=>14
+7>>1=3
+
+XOR(properties):
+n^n=0
+n^n^n=n
+if number of operands is odd then operand will be answer
+n^0=n
+
+1^2^3=0
+rightshift x>>y=>x/2*power(y) ex: 5>>1=5/2=2
+leftshift  x<<y=>x*2*power(y) ex: 5<<2=5*2^2=5*4=20
+
+After creating an array find out the smallest missing positive integer
+ex:[-6,-1,0,4,5,9]
+o/p:1
+
+find out that which occurs?
+XOR of all elements...same elements will get cancelled
+
+def findSingle(ar,n):
+	res=ar[0]
+	#DO XOR of all elements and return
+	for i in range(1,n):
+		res=res^ar[i]
+	return res
+ar=[2,3,5,4,5,3,4,2,88]
+print(findSingle(ar,len(ar)))
+output:88
+
+Swap 2 numbers using XOR
+a=100
+b=200
+print("a:",a,"b:",b)
+a=a^b
+b=a^b
+a=a^b
+print("a:",a,"b:",b)
+
+for the given number n check the kth bit is set or not (1)
+n=10,k=3
+Logic:n&(1<<k-1)
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int n,k,v;
+    scanf("%d%d",&n,&k);
+    v=n&(1<<k-1);
+    if(v==1)
+    printf("set");
+    else
+    printf("Not set");
+}
+
+Given n print the xor of all numbers
+input:5
+ans should be 1^2^3^4^5
+output:1
+
+n=12
+xor=0
+for i in range(1,n+1):
+	xor=xor^i
+print(xor)
+
+#O(n)
+
+#optimize
+n=1 	1
+  2	3
+  3	0
+  4	4
+  5	1
+  6	7
+  7	0
+  8	8
+  9	1
+
+n=7
+Xor=0
+if n%4==0:
+	print(n)
+elif n%4==1:
+	print(1)
+elif n%4==2:
+	print(n+1)
+elif n%4==3:
+	print(0)
+above is O(1) no loop
+
+Given a range l-r/ print xor
+lets say
+l=2 r=5
+2^3^4^5
+
+l=2 r=4
+2^3^4 ans:5
+
+Even or odd using bitwise operators
+
+n=13
+if(n&1==0):
+   print("Even")
+else:
+   printf("Odd")
