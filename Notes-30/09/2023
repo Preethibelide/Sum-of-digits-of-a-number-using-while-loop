@@ -1,0 +1,122 @@
+MASTERS THEOREM:
+
+for(i=100;i>=0;i-=10){
+
+}
+O(n)
+=>constants are neglected in time complexity.
+i=1;i<100;i*=2
+	  i/=2
+=>if there is division or multiplication involved then the time complexity will be O(log(n))
+=>array space complexity will be O(n).
+
+2=10
+2*2=100
+2*2*2=1000
+2*2*2*2=10000
+
+=>35 keywords are there in python
+=>53 keywords are there in java.
+
+types of classes in python
+common class
+abstract class
+constructor class
+
+In java we can write 6 elements in encaptulation
+class=>membervariables=>constructor=>static block=>enum=>subclass
+In Python we can write 4 elements in encaptulation
+membermethod,variable,constructor
+
+Double underscore is used to declare private variables in class in python
+The private variables can also be accessed by the subclass in inheritance
+
+
+class b(a) 
+                syntax for inhertance of parent class to subclass
+
+The methods of child class extended from parent class are called derived methods
+abc keyword is used to create a abstract class in python
+
+Abstraction: Hiding of information from the outer world
+Object cannot be created for abstract class
+
+class A:
+   x=10
+   __y=20
+   def s(self):
+        print("add")
+   def work(self,x):
+      self.x=x
+      print(x)
+class B(A):
+    print("hii")
+    print(A.x)
+obj=B()
+print(obj.x)
+obj.s()
+obj.work(50)
+
+=>stack,queue,linkedlist,sortings,searching,map are used for memory allocation
+
+create one class that consists of three variables with initialization and you have to take two methods first method it is a two argumented function first type is string second is int argument inside of the method the string reverse value you have to print you have to print sqr(int) argument value.method2 name is: display results inside of the method length of a string
+print % of two integer class level variables read the values from the user.
+
+
+class program:
+    s=input()
+    i=int(input())
+    c=int(input())
+    def method1(self,s,i):
+        self.s=s
+        self.i=i
+        print(s[::-1])
+        print(i*i)
+    def display_result(self,s,i,c):
+        self.s=s
+        self.i=i
+        self.c=c
+        print(len(s))
+        print(i%c)
+obj=program()
+obj.method1(obj.s,obj.i)
+obj.display_result(obj.s,obj.i,obj.c)    
+
+class A:
+   a=10
+   def s(self,a):
+       print(a)
+   def d(self):                #ouput will be 20 because local variable value is 20 in method if we write the self then we will get the global variable value
+       print(self,a)
+obj=A()
+obj.s(20)
+obj.d(30)
+
+STACK:
+l=[]
+n=int(input('Enter num of elements:'))
+for i in range(n):
+    l.append(int(input("Enter an element:")))
+print(l)
+for i in range(n):
+    print(l.pop())
+print(l)
+
+method2:
+from collections import deque
+l=deque()
+n=int(input("Enter n value:"))
+for i in range(n):
+    l.append(int(input("Enter the value:")))
+for i in range(n):
+    print(l.pop())
+print(l)
+
+QUEUE:
+l=[]
+n=int(input("Enter n value:"))
+for i in range(n):
+    l.append(int(input("Enter the value:")))
+for i in range(n):
+    print(l.pop(0))
+print(l)
