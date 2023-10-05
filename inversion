@@ -1,0 +1,10 @@
+#inversion
+a=list(map(int,input().split(" ")))
+count=0
+for i in range(len(a)):
+    for j in range(i+1,len(a)):
+        if i<j:
+            if a[i]>a[j]:
+                count=count+1
+                print(a[i],a[j])
+print(count)
