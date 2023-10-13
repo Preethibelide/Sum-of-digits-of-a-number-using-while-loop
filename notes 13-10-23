@@ -1,0 +1,404 @@
+=>decimal to binary convertion and put 1 at the provided index and convert to decimal number and print
+=>Tower of hanoi
+def TOH(n, src, aux, dest):
+    if n <= 1:
+        print(src + " -> " + dest)
+        return
+    TOH(n-1, 'src', 'dest', 'aux')
+    print(src + " -> " + dest)
+    TOH(n-1, 'aux', 'src', 'dest')
+n = 4
+TOH(n, 'src', 'aux', 'dest')
+
+n=int(input())
+if n==1:
+    print(1)
+else:
+    r=(2**n)-1
+    print(r)
+
+Recusion:
+def count(n):
+    if n == 1:
+        return 1 
+    return 2*count(n-1)+1  
+ans = count(3)
+print(ans)
+print((2**n) - 1)
+
+#valid magic sqare matrix or not
+for row in arr:
+    if sum(row) != 15:
+        return False
+row sum
+for i in range(len(arr)):
+    temp = 0
+    for j in range(len(arr))
+        temp += arr[j][i]
+    if temp != 15:
+        return False
+col sum
+for i in range(len(arr)):
+    for j in range(len(arr))
+        if i == j:
+            temp += arr[i][j]
+if temp != 15:
+    return False
+diag1 sum
+i=0, j=n-1
+while i < n and j >=0:
+    temp += arr[i][j]
+    i += 1
+    j -= 1
+if temp != 15;
+    return False
+diag2 sum
+
+1) (i) calculate the position as (n/2, n-1) = (x,y)
+  (ii) calculate the further position values as (x-1, y+1) => (i,j)
+2) either i or j, go out of the range (0,1,...n-1) then wrap around
+   (if i is less than 0, make i= n-1)
+    (if j is greater than n-1, make j=0)
+3) if i and j both go out of the range( eg: i<0 and j>n-1)
+   then (i, j) => (0, n-2)
+
+def generate(n):
+    arr = [[0 for i in range(n)] for j in range(n)]
+    i = n//2
+    j = n-1
+    num = 1
+    while num <= (n*n):
+        if i < 0 and j > n-1: #3rd condt
+            i = 0
+            j = n-2
+        else:
+            if i<0:
+                i = n-1
+            if j > n-1:
+                j = 0
+        if arr[i][j] != 0:
+            i += 1 
+            j -= 2 
+            continue
+        else:
+            arr[i][j] = num
+            num = num+1
+        i = i-1
+        j = j+1
+    for row in arr:
+        print(row)
+n = 4
+generate(n)
+
+Missing number finding methods
+
+=>based on sum
+=>by creating a temparory array and storing 1 at the index of the number and printing the missing.
+n=10
+     arr=[1,8,4,3,5,2,6,10,9]
+[1-n]
+temp_arr=[0,1,1,1,1,1,1,0,1,1,1]
+          0,1,2,3,4,5,6,7,8,9,10
+
+=>By hashmap
+
+=>sort and equal to index
+
+=>brute_force
+n=10
+arr=[1,8,4,3,5,2,6,10,9]
+arr=sorted(arr)
+for i in range(1,n):
+    if i not in arr:
+        print(i)
+=>XOR operator
+def xor_operator(arr,n):
+    ans=0
+    for i in range(1,n+1):
+        ans=ans^i
+        if i!=n:
+            ans=ans^arr[i-1]
+    return ans
+n=int(input())
+arr=list(map(int,input().split(",")))
+print(xor_operator(arr,n))
+array=[-3,8,7,2,-5,13,18,9,6]
+target=20
+
+print the pairs that gives the sum target
+
+def sumpairs(a):#pairs will repeat
+    pairs=[]
+    for i in range(len(a)):
+        for j in range(len(a)):
+            if a[i]+a[j]==target:
+                pairs.append((a[i],a[j]))
+    return pairs
+a=[-3,8,7,2,-5,13,18,9,6]
+target=10
+print(sumpairs(a))
+
+def sumpairs(a):#no repetition
+    pairs=[]
+    for i in range(len(a)):
+        for j in range(i+1,len(a)):
+            if a[i]+a[j]==target:
+                pairs.append((a[i],a[j]))
+    return pairs
+a=[-3,8,7,2,-5,13,18,9,6]
+target=10
+print(sumpairs(a))
+
+=>two pointers algorithm
+
+i=0
+j=len(arr)-1
+while(i<j):
+   if i==j:
+      return True
+   if i<j:
+      i+=1
+   if i>j:
+      j-=1
+ return False
+
+=>diff=target-a[i]
+
+def query_sub_array(arr,queries):
+    n=len(arr)
+    ps=[0 for i in range(n)]
+    for i in range(n):
+        if i==0:
+            ps[i]=arr[i]
+        else:
+            ps[i]=ps[i-1]+arr[i]
+    for query in queries:
+        i=query[0]
+        j=query[1]
+        if i==0:
+            print(ps[j],end=" ")
+        else:
+            print(ps[j]-ps[i-1],end=" ")
+query_sub_array([3,9,-2,8,7,6,5],[[0,4],[2,5],[0,1],[0,6]])
+
+sliding window protocol
+def max_sum_subarray(arr, k, n):
+    max_sum = 0
+    for i in range(n - k + 1):
+        current_sum = sum(arr[i:i + k])
+        max_sum = max(max_sum, current_sum)
+    return max_sum
+arr = list(map(int, input().split(",")))
+n = len(arr)
+k = int(input())
+print(max_sum_subarray(arr, k, n))
+
+
+def max_sum_subarray(arr, k, n):
+    max_sum = 0
+    previous_sum=0
+    i,j=0,k-1
+    while j<len(arr):
+        if i==0:
+            max_sum=sum(arr[i:j+1])
+            previous_sum=max_sum
+        else:
+            curr_sum=previous_sum-arr[i-1]+arr[j]
+            max_sum=max(max_sum,curr_sum)
+            previous_sum=curr_sum
+        i+=1
+        j+=1
+    return max_sum    
+arr = list(map(int, input().split(",")))
+n = len(arr)
+k = int(input())
+print(max_sum_subarray(arr, k, n))
+
+def kadanes(arr):
+    _sum = float("-inf")
+    cs = arr[0]
+    n=len(arr)
+    for i in range(1,n):
+        if cs<0:
+            cs=0
+        if arr[i]<0:
+            _sum=max(_sum,cs+arr[i])
+        cs=cs+arr[i]
+    return max(_sum,cs)
+print(kadanes([-1,-2,3,4,-6,-18,-65,110]))
+
+number of substrings is n(n+1)/2
+
+string=input()
+count=0
+for i in range(len(string)):
+    for j in range(i+1,len(string)+1):
+        substring=string[i:j]
+        substringrev=substring[::-1]
+        if substring==substringrev:
+            count+=1
+print(count)
+
+Anagram
+s1="hello"
+s2="olleh"
+s1=sorted(s1)
+s2=sorted(s2)
+if s1==s2:
+    print("True")
+else:
+    print("False")
+#same letters should be in the two strings
+
+=>unique positions
+def main():
+    string="bfbfbfbbfbbfbfbfb"
+    visited=[0 for i in range(len(string)*2)]
+    cp=0
+    visited[cp]=1
+    ans=1
+    for ch in string:
+        if ch=='b':
+            if cp-1>=0:
+                cp-=1
+        else:
+            cp+=2
+        if visited[cp]!=1:
+            ans+=1
+            visited[cp]=1
+    return ans
+print(main())
+
+def permute(arr):
+    if len(arr)==1:
+        return [arr]
+    ans=[]
+    for i in range(len(arr)):
+        temp_ans=arr[i]
+        sub_arr=arr[0:i]+arr[i+1:]
+        p_arr=permute(sub_arr)
+        for e in p_arr:
+            ans.append([temp_ans]+e)
+    return ans
+arr=[1,2,3]
+print(permute(arr))
+
+def floor_values(a,target):
+    left=0
+    right=len(a)-1
+    while left<=right:
+        mid=(left+right)//2
+        if a[mid]==target:
+            return mid
+        elif a[mid]<target:
+            floor=a[mid]
+            left=mid+1
+        elif a[mid]>target:
+            right=mid-1
+    return floor
+def ceil_values(a,target):
+    left=0
+    right=len(a)-1
+    while left<=right:
+        mid=(left+right)//2
+        if a[mid]==target:
+            return mid
+        elif a[mid]<target:
+            left=mid+1
+        elif a[mid]>target:
+            ceil=a[mid]
+            right=mid-1
+    return ceil
+a=[1,2,3,4,6,7,8,9]
+target=5
+print(floor_values(a,target) , ceil_values(a,target))
+
+#0,1,1,2,3,5,8,13,21,34,55,89
+def fibonacci(n):
+    if n<=0:
+        return 0
+    elif n<2 and n>0:
+        return 1
+    return fibonacci(n-1)+fibonacci(n-2)
+n=int(input())
+for i in range(n):
+    print(fibonacci(i))
+
+#0,1,1,2,3,5,8,13,21,34,55,89
+def fibonacci(n):
+    if n<=0:
+        return 0
+    elif n==1:
+        return 1
+    else:
+        a=0
+        b=1
+        fib=0
+        for i in range(2,n):
+            fib=a+b
+            a=b
+            b=fib
+    return fib
+n=int(input())
+print(fibonacci(n))
+
+nth fibonacci number
+#0,1,1,2,3,5,8,13,21,34,55,89
+def fib(n):
+    if n==1 or n==2:
+        return n-1
+    return fib(n-1)+fib(n-2)
+n=int(input())
+print(fib(n))
+
+=>linkedlist
+single
+double
+circular
+xor
+multi linked list
+hashmap
+sorting algos,knapsack
+=>stack and queue
+Backtracking,dp,greedy algorithm
+=>Tree
+Binary
+Binary search tree
+Ternanry tree
+nth tree
+=>Graph
+Tries
+Heap(Heap sort)
+min heap
+max heap
+
+class Node:
+    # def __new__(self,data):
+    #     print("inside new")
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.start = None
+    def append_node(self,data):
+        new_node = Node(data)
+        if self.start is None:
+            self.start = new_node
+        else:
+            temp = self.start
+            while temp.next is not None:
+                temp = temp.next
+            temp.next = new_node
+        
+    def print_list(self):
+        temp = self.start
+        while temp is not None:
+            print(temp.data,end=" ")
+            temp = temp.next
+        print()
+my_list = LinkedList()
+for i in range(11):
+    my_list.append_node(i)
+my_list.print_list()
